@@ -57,4 +57,16 @@ class PokerHandTest {
         result = hand1.compareTo(hand4);
         assertEquals(-1, result);
     }
+
+    @Test
+    void count() {
+        PokerHand hand1 = new PokerHand("2D 2S TS TC JH");
+        PokerHand hand2 = new PokerHand("9D TS JH 9H KD");
+
+        int result = hand1.count(hand1.getPairs());
+        assertEquals(2, result);
+
+        result = hand2.count(hand2.getPairs());
+        assertEquals(1, result);
+    }
 }

@@ -11,6 +11,7 @@ public class PokerHand implements Comparable<PokerHand> {
     private List<String> values = Arrays.asList("2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A");
 
     private Map<Character, Integer> valueRank = new HashMap<>();
+    private Map<Character, Integer> pairs = new HashMap<>();
 
     public PokerHand(String hand) {
         this.hand = hand;
@@ -28,7 +29,7 @@ public class PokerHand implements Comparable<PokerHand> {
         String[] cards = hand.split(" ");
         Arrays.sort(cards, (a, b) -> valueRank.get(a.charAt(0)) - valueRank.get(b.charAt(0)));
         hand = Arrays.toString(cards);
-        Map<Character, Integer> pairs = new HashMap<>();
+
 
         boolean isFlash = true;
         boolean isStreet = true;
@@ -81,7 +82,7 @@ public class PokerHand implements Comparable<PokerHand> {
 
     }
 
-    private int count(Map<Character, Integer> pairs) {
+    public int count(Map<Character, Integer> pairs) {
         int count = 0;
         for (Map.Entry<Character, Integer> pair : pairs.entrySet()) {
             if (pair.getValue() == 2) {
@@ -108,5 +109,9 @@ public class PokerHand implements Comparable<PokerHand> {
 
     public Map<Character, Integer> getValueRank() {
         return valueRank;
+    }
+
+    public Map<Character, Integer> getPairs() {
+        return pairs;
     }
 }
